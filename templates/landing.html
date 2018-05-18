@@ -1,13 +1,52 @@
+{% load bootstrap3 %}
+<!--  -->
+{% load static%}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/if_Instaicon.png' %}" />
+  <!--  -->
+  <title>Carpool-Home</title>
+  <!--  -->
+  {% block styles %}
+  <!--  -->
+  {% bootstrap_css %}
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <!--  -->
+  {% endblock %}
 </head>
 
 <body>
-  <h1>Welcome Carpool here</h1>
+  {% block content %}
+  <div class="container text-center">
+    <div class="jumbotron">
+      <h1>Welcome!</h1>
+      <br>
+      <h1> Carpool here</h1>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <p><a href="/driver/accounts/register/">Driver App</a></p>
+    <p><a href="#">Rider App</a></p>
+  </div>
+
+  <!--  -->
+  {%endblock%}
+  <!--  -->
+  {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %}
+  <!--  -->
+  {% endblock %}
 </body>
 
 </html>
