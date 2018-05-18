@@ -1,11 +1,10 @@
 {%extends "registration/base.html"%} {% load bootstrap3 %} {% block content %}
-<div class="container">
+<div class="container-fluid" style="background-color:black; color: white;">
   <div class="text-center">
     <h1 style="font-family: 'Cookie', cursive;"><strong>
     <a href="#"><img src="#" width="30" height="30" alt="icon"></a>
-    Uber</strong></h1>
+    Carpool-R-Us</strong></h1>
   </div>
-  <hr>
 </div>
 <br>
 <br>
@@ -15,7 +14,7 @@
     <!-- empty div -->
     <div class="col-md-1"></div>
     <div class="col-md-5">
-      <img src="#" alt="InstaClone Logo" style="width:450px; height:450px">
+      <img src="#" alt="Carpool Logo" style="width:450px; height:450px">
     </div>
     <div class="col-md-4">
       <br> {% if form.errors %}
@@ -26,18 +25,21 @@
         <div class="panel-heading">
           <h3 class="text-center">Sign Up</h3>
         </div>
+        <div class="panel-body" style="background-color:black; color: white;">
+          <p>Already have an account?
+            <a href="/driver/accounts/login" class="forgot"> Login here ...</a></p>
+        </div>
+
         <div class="panel-body">
-          <form action="/accounts/register/" method="post">
+          <form action="/driver/accounts/register/" method="post">
             {% csrf_token %} {% bootstrap_form form%}
             <div class="form-group">
               <button class="btn btn-primary btn-block" type="submit">Create Account</button>
             </div>
-            <input type="hidden" name="next" value="{{next}}">
+            <input type="hidden" name="next" value="/home">
           </form>
         </div>
-        <div class="panel-body">
-          <a href="/accounts/login" class="forgot">Already got an account? Login here ...</a>
-        </div>
+
       </div>
     </div>
     <!-- empty div -->
