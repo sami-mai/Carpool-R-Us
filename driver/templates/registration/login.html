@@ -1,11 +1,10 @@
  {%extends "registration/base.html"%} {% load bootstrap3 %} {% block content %}
-<div class="container">
+<div class="container-fluid" style="background-color:black; color: white;">
   <div class="text-center">
     <h1 style="font-family: 'Cookie', cursive;"><strong>
-   <a href="#"><img src="#" width="30" height="30" alt="icon"></a>
-   Uber</strong></h1>
+     <a href="#"><img src="#" width="30" height="30" alt="icon"></a>
+     Carpool-R-Us</strong></h1>
   </div>
-  <hr>
 </div>
 <br>
 <br>
@@ -26,20 +25,22 @@
         <div class="panel-heading">
           <h3 class="text-center">Login</h3>
         </div>
+        <div class="panel-body" style="background-color:black; color: white;">
+          <p>Don't have an account yet?
+            <a href="/driver/accounts/register" class="forgot"> Register here ...</a></p>
+        </div>
         <div class="panel-body">
-          <form action="/accounts/login/" method="post">
+          <form action="/driver/accounts/login/" method="post">
             {% csrf_token %} {% bootstrap_form form%}
             <div class="form-group">
               <button class="btn btn-primary btn-block" type="submit">Login</button>
             </div>
-            <input type="hidden" name="next" value="{{next}}">
+            <input type="hidden" name="next" value="/home">
 
           </form>
 
         </div>
-        <div class="panel-body">
-          <a href="/accounts/register" class="forgot">Don't have an account yet? Register here ...</a>
-        </div>
+
       </div>
     </div>
     <!-- empty div -->
