@@ -1,9 +1,16 @@
-from django.conf.urls import url
-from . import views
+from django.conf.urls import url, include
+from django.contrib.auth import views
+# from . import views as driver_views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    url(r'^accounts/login', views.login, name="login"),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    # url(r'^accounts/', include('registration.backends.hmac.urls')), -- for email confirmation
+    url(r'^accounts/logout/$', views.logout, {"next_page": '/'}),
+    # url(r'^tinymce/', include('tinymce.urls')), -- for smart editor
+
     # url('^$', views.home, name='home'),
     # url(r'^login/', views.login, name="login"),
     # url(r'^accounts/profile/(\d+)', views.user_profile, name="user_profile"),
