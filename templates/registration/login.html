@@ -1,11 +1,11 @@
-{%extends "registration/base.html"%} {% load bootstrap3 %} {% load static%}
+ {%extends "registration/base.html"%} {% load bootstrap3 %} {% load static%}
 <!--  -->
 {% block content %}
 <div class="container-fluid" style="background-color:black; color: white;">
   <div class="text-center">
     <h1 style="font-family: 'Cookie', cursive;"><strong>
-    <a href="/home"><img src="{% static '/images/caricon1.png'%}" width="30" height="30" alt="icon"></a>
-    Carpool-R-Us Driver</strong></h1>
+     <a href="/home"><img src="{% static '/images/caricon1.png'%}" width="30" height="30" alt="icon"></a>
+     Carpool-R-Us </strong></h1>
   </div>
 </div>
 <br>
@@ -16,7 +16,7 @@
     <!-- empty div -->
     <div class="col-md-1"></div>
     <div class="col-md-5">
-      <img src="#" alt="Carpool Logo" style="width:450px; height:450px">
+      <img src="#" alt="InstaClone Logo" style="width:450px; height:450px">
     </div>
     <div class="col-md-4">
       <br> {% if form.errors %}
@@ -25,21 +25,22 @@
       <div class="panel panel-default">
 
         <div class="panel-heading">
-          <h3 class="text-center">Sign Up</h3>
+          <h3 class="text-center">Login</h3>
         </div>
         <div class="panel-body" style="background-color:black; color: white;">
-          <p>Already have a Driver account?
-            <a href="/driver/accounts/login" class="forgot"> Login here ...</a></p>
+          <p>Don't have a Driver account yet?
+            <a href="/accounts/register" class="forgot"> Register here ...</a></p>
         </div>
-
         <div class="panel-body">
-          <form action="/driver/accounts/register/" method="post">
+          <form action="/accounts/login/" method="post">
             {% csrf_token %} {% bootstrap_form form%}
             <div class="form-group">
-              <button class="btn btn-primary btn-block" type="submit">Create Account</button>
+              <button class="btn btn-primary btn-block" type="submit">Login</button>
             </div>
             <input type="hidden" name="next" value="/home">
+
           </form>
+
         </div>
 
       </div>

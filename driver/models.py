@@ -72,9 +72,3 @@ class Driver_Profile(models.Model):
 
     class Meta:
         ordering = ['destination']
-
-    @receiver(post_save, sender=User)
-    def update_driver_profile(sender, instance, created, **kwargs):
-        if created:
-            Driver_Profile.objects.create(user=instance)
-        instance.driver_profile.save()
