@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home$', project_views.landing, name='landing'),
     url(r'^driver/', include('driver.urls')),
-    # url(r'^rider/', include('rider.urls')),
+    url(r'^rider/', include('rider.urls')),
 
 
 
