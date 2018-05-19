@@ -49,8 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rider',
-    'driver',
+    'driver.apps.DriverConfig',
+    'rider.apps.RiderConfig',
     'bootstrap3',
     'tinymce',
 ]
@@ -150,5 +150,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Auth redirect
-LOGIN_REDIRECT_URL = 'landing'
-LOGOUT_REDIRECT_URL = 'landing'
+# LOGIN_REDIRECT_URL = 'landing'
+# LOGOUT_REDIRECT_URL = 'landing'

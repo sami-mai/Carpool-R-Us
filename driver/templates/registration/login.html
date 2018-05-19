@@ -1,9 +1,11 @@
- {%extends "registration/base.html"%} {% load bootstrap3 %} {% block content %}
+ {%extends "registration/base.html"%} {% load bootstrap3 %} {% load static%}
+<!--  -->
+{% block content %}
 <div class="container-fluid" style="background-color:black; color: white;">
   <div class="text-center">
     <h1 style="font-family: 'Cookie', cursive;"><strong>
      <a href="#"><img src="#" width="30" height="30" alt="icon"></a>
-     Carpool-R-Us</strong></h1>
+     Carpool-R-Us Driver</strong></h1>
   </div>
 </div>
 <br>
@@ -26,7 +28,7 @@
           <h3 class="text-center">Login</h3>
         </div>
         <div class="panel-body" style="background-color:black; color: white;">
-          <p>Don't have an account yet?
+          <p>Don't have a Driver account yet?
             <a href="/driver/accounts/register" class="forgot"> Register here ...</a></p>
         </div>
         <div class="panel-body">
