@@ -44,8 +44,8 @@ class Review(models.Model):
     reviews model class
     '''
     review = HTMLField(blank=True)
-    driver = models.ForeignKey(User, related_name='driver_profile', on_delete=models.CASCADE, null=True)
-    rider = models.ForeignKey(User, related_name='rider_profile', on_delete=models.CASCADE, null=True)
+    driver = models.ForeignKey(User, related_name='driver', on_delete=models.CASCADE, null=True)
+    rider = models.ForeignKey(User, related_name='rider', on_delete=models.CASCADE, null=True)
     post_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -64,7 +64,7 @@ class Driver_Profile(models.Model):
     pickup_locations = models.ManyToManyField(Location, related_name='pickup')
     destination = models.ForeignKey(Location, on_delete=models.CASCADE)
     departure_time = models.DateTimeField(auto_now_add=True)
-    reviews = models.ForeignKey(Review, on_delete=models.CASCADE)
+    reviews = models.ForeignKey(Review, related_name='driver_review', on_delete=models.CASCADE)
     email_confirmed = models.BooleanField(default=False)
 
     def __str__(self):

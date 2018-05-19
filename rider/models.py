@@ -6,12 +6,12 @@ from driver.models import Location, Review
 
 
 class Rider_Profile(models.Model):
-    name = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
+    name = models.OneToOneField(User, related_name='rider_profile', on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='avatar/', blank=True, null=True)
     current_location = models.ForeignKey(Location, related_name='current_location', on_delete=models.CASCADE)
-    pickup_location = models.ForeignKey(Location, related_name='pickup', on_delete=models.CASCADE)
-    reviews = models.ForeignKey(Review, on_delete=models.CASCADE)
-    national_ID = models.DecimalField()
+    pickup_location = models.ForeignKey(Location, related_name='rider_pickup', on_delete=models.CASCADE)
+    reviews = models.ForeignKey(Review, related_name='rider_review', on_delete=models.CASCADE)
+    national_ID = models.DecimalField(decimal_places=2, max_digits=50)
     email_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
