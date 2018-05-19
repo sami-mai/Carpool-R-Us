@@ -49,8 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'driver.apps.DriverConfig',
-    'rider.apps.RiderConfig',
+    'driver',
+    'rider',
     'bootstrap3',
     'tinymce',
 ]
@@ -71,10 +71,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': [
-            os.path.join(BASE_DIR, 'driver/templates'),
-            os.path.join(BASE_DIR, 'rider/templates'),
-        ],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
