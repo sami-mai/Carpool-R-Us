@@ -60,11 +60,11 @@ class Review(models.Model):
 class Driver_Profile(models.Model):
     name = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='avatar/', blank=True, null=True)
-    car_details = models.ForeignKey(Car, on_delete=models.CASCADE)
+    car_details = models.ForeignKey(Car, on_delete=models.CASCADE, null=True)
     pickup_locations = models.ManyToManyField(Location, related_name='pickup')
-    destination = models.ForeignKey(Location, on_delete=models.CASCADE)
+    destination = models.ForeignKey(Location, on_delete=models.CASCADE, null=True)
     departure_time = models.DateTimeField(auto_now_add=True)
-    reviews = models.ForeignKey(Review, related_name='driver_review', on_delete=models.CASCADE)
+    reviews = models.ForeignKey(Review, related_name='driver_review', on_delete=models.CASCADE, null=True)
     email_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
@@ -72,3 +72,15 @@ class Driver_Profile(models.Model):
 
     class Meta:
         ordering = ['destination']
+
+    # Create Profile when creating a User
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Driver_Profile.objects.create(name=instance)
+        instance.profile.save()
+
+    # Save Profile when saving a User
+    # @receiver(post_save, sender=User)
+    # def save_user_profile(sender, instance, **kwargs):
+    #     instance.profile.save()
