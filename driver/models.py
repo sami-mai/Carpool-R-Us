@@ -9,14 +9,14 @@ class Car(models.Model):
     type = models.CharField(max_length=40)
     brand = models.CharField(max_length=40)
     colour = models.CharField(max_length=40)
-    plate_num = models.DecimalField(decimal_places=2, max_digits=20)
-    seats_available = models.DecimalField(decimal_places=2, max_digits=20)
+    plate_num = models.CharField(max_length=40)
+    seat_capacity = models.DecimalField(decimal_places=2, max_digits=20)
 
     def __str__(self):
         return self.plate_num
 
     class Meta:
-        ordering = ['seats_available']
+        ordering = ['seat_capacity']
 
 
 class Tag(models.Model):
@@ -60,6 +60,7 @@ class Review(models.Model):
 class Driver_Profile(models.Model):
     name = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
     avatar = models.ImageField(upload_to='avatar/', blank=True, null=True)
+    license_number = models.CharField(max_length=40, null=True)
     car_details = models.ForeignKey(Car, on_delete=models.CASCADE, null=True)
     pickup_locations = models.ManyToManyField(Location, related_name='pickup')
     destination = models.ForeignKey(Location, on_delete=models.CASCADE, null=True)

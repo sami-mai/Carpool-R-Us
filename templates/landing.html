@@ -36,7 +36,7 @@
   <hr> {%if user.is_authenticated%}
   <div class="container">
     <p><a href="/logout/">Logout here</a></p>
-    <h3><a href="/driver/home/">Driver App</a></h3>
+    <h3><a href="{% url 'home' request.user.id%}">Driver App</a></h3>
     <h3><a href="/rider/home/">Rider App</a></h3>
   </div>
   <!--  -->

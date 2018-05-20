@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
 
-    url(r'^home/', driver_views.home, name='home'),
+    url(r'^home/(\d+)', driver_views.home, name='home'),
     url(r'^edit-profile/(\d+)', driver_views.edit_profile, name='edit_profile'),
 ]
 

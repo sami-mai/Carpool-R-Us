@@ -44,21 +44,45 @@
                   <form action="{% url 'edit_profile' current_user.id %}" method="post" enctype="multipart/form-data" style="width:400px;">
                     {%csrf_token%}
                     <div class="form-group">
-                      {% bootstrap_form user_form%} {% bootstrap_form profile_form%}
-                      <input type="submit" class="btn btn-primary btn-block" value="Update">
+                      {% bootstrap_form profile_form%} {% bootstrap_form user_form%}
+                      <!-- <input type="submit" class="btn btn-primary btn-block" value="Update"> -->
                     </div>
-                  </form>
+                    <!-- </form> -->
                 </div>
               </div>
             </div>
 
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Car Information
+        </a>
+      </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                  <!-- <form action="{% url 'edit_profile' current_user.id %}" method="post" enctype="multipart/form-data" style="width:400px;"> -->
+                  {%csrf_token%}
+                  <div class="form-group">
+                    {% bootstrap_form car_form%}
+                    <!-- <input type="submit" class="btn btn-primary btn-block" value="Update"> -->
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block" value="Save changes" style="width:525px;>
           </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-3"></div>
+  <div class=" col-md-3 "></div>
 </div>
 
 </div>
