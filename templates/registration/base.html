@@ -5,14 +5,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/png" href="{% static '/images/caricon1.png' %}" />
+  <link rel="shortcut icon" type="image/png" href="{% static '/images/caricon1.png'%}" />
 
-  <!--  -->
   <!--  -->
   {% if title %}
   <title style="font-family: 'Cookie', cursive;">Carpool-R-Us {{title}}</title>
   {% else %}
-  <title style="font-family: 'Cookie', cursive;"> Carpool-R-Us Rider </title>
+  <title style="font-family: 'Cookie', cursive;"> Carpool-R-Us Home </title>
   {% endif %}
   <!--  -->
   {% block styles %}

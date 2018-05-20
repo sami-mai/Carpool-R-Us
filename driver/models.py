@@ -72,6 +72,7 @@ class Driver_Profile(models.Model):
 
     class Meta:
         ordering = ['destination']
+<<<<<<< HEAD
 
     # @receiver(post_save, sender=User)
     # def update_driver_profile(sender, instance, created, **kwargs):
@@ -89,3 +90,5 @@ class Driver_Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.driver_profile.save()
+=======
+>>>>>>> 2316c90bd16bfc1daeb4b3038f8d5bfc3ded17a1

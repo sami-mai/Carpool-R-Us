@@ -19,9 +19,3 @@ class Rider_Profile(models.Model):
 
     class Meta:
         ordering = ['pickup_location']
-
-    @receiver(post_save, sender=User)
-    def update_rider_profile(sender, instance, created, **kwargs):
-        if created:
-            Rider_Profile.objects.create(user=instance)
-        instance.rider_profile.save()

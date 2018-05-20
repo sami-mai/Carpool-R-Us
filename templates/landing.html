@@ -33,12 +33,20 @@
       <h1> Carpool-R-Us</h1>
     </div>
   </div>
-  <hr>
+  <hr> {%if user.is_authenticated%}
   <div class="container">
-    <p><a href="/driver/accounts/register/">Driver App</a></p>
-    <p><a href="/rider/accounts/register/">Rider App</a></p>
+    <p><a href="/accounts/logout/">Logout here</a></p>
+    <h3><a href="/driver/home/">Driver App</a></h3>
+    <h3><a href="/rider/home/">Rider App</a></h3>
   </div>
+  <!--  -->
+  {%else%}
 
+  <div class="container">
+    <p><a href="/accounts/register/">Signup here</a></p>
+    <p><a href="/accounts/login/">Login here</a></p>
+  </div>
+  {%endif%}
   <!--  -->
   {%endblock%}
   <!--  -->
