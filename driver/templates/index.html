@@ -15,13 +15,15 @@
     <h1 style="font-family: 'Cookie', cursive;"><strong>Carpool-R-Us</strong></h1>
     <br>
 
-    <h3>Welcome {{current_user|title}}, to the endless possibilities!</h3> {%if profile%}
+    <h3>Welcome {{current_user|title}}, to the endless possibilities!</h3>
+    <!--  -->
+    {%if profile.license_number%}
     <h4 class="text-muted">Good to have you back.</h4>
     <br>
     <a type="button" class="btn btn-default btn-sm" href="{% url 'edit_profile' current_user.id %}">Update profile <i class="fa fa-cog fa-spin"></i></a>
     <!--  -->
     {%else%}
-    <h4 class="text-muted">Let get you set up.</h4>
+    <h4 class="text-muted">Let's get you set up.</h4>
     <br>
     <a type="button" class="btn btn-primary btn-lg" href="{% url 'edit_profile' current_user.id %}">Get Started</a> {%endif%}
   </div>

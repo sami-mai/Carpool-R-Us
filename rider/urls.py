@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
 
-    url(r'^home/', rider_views.home, name='home'),
+    url(r'^home/(\d+)', rider_views.home, name='rider_home'),
+    url(r'^edit-profile/(\d+)', rider_views.edit_profile, name='edit_riderprofile'),
 ]
 
 
