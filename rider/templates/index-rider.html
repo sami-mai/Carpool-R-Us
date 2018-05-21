@@ -4,7 +4,7 @@
 <div class="container-fluid" style="background-color:black; color: white;">
   <div class="text-center">
     <h1 style="font-family: 'Cookie', cursive;"><strong>
-     <a href="/"><img src="{% static '/images/caricon1.png'%}" width="30" height="30" alt="icon"></a>
+     <a href="{%url 'rider_home' request.user.id %}"><img src="{% static '/images/caricon1.png'%}" width="30" height="30" alt="icon"></a>
      Carpool-R-Us Rider </strong></h1>
   </div>
 </div>

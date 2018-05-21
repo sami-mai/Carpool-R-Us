@@ -3,6 +3,15 @@
 {% load static%}
 <!--  -->
 {% block content %}
+<div class="container-fluid" style="background-color:black; color: white;">
+  <div class="text-center">
+    <h1 style="font-family: 'Cookie', cursive;"><strong>
+     <a href="{%url 'home' request.user.id %}"><img src="{% static '/images/caricon1.png'%}" width="30" height="30" alt="icon"></a>
+     Carpool-R-Us Driver</strong></h1>
+  </div>
+</div>
+<br>
+<br>
 <!--  -->
 {% for profile in profiles %} {% empty %}
 <div class="container">
