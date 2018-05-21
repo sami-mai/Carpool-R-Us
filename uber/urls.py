@@ -18,15 +18,16 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.contrib.auth import views as auth_views
-from . import views as project_views
+# from django.contrib.auth import views as auth_views
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^home$', project_views.landing, name='landing'),
-    url(r'^accounts/login/', auth_views.login, name='login'),
-    url(r'^accounts/', include('registration.backends.simple.urls')),
-    url(r'^logout/$', auth_views.logout, {"next_page": '/home'}),
+    url(r'', TemplateView.as_view(template_name='landing.html'), name='landing'),
+    # url(r'^home$', project_views.landing, name='landing'),
+    # url(r'^accounts/login/', auth_views.login, name='login'),
+    # url(r'^accounts/', include('registration.backends.simple.urls')),
+    # url(r'^logout/$', auth_views.logout, {"next_page": '/home'}),
     url(r'^driver/', include('driver.urls')),
     url(r'^rider/', include('rider.urls')),
 
