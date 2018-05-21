@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'driver',
     'rider',
+    'geoApi',
     'bootstrap3',
     'tinymce',
 ]

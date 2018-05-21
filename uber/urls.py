@@ -22,14 +22,15 @@ from django.contrib.auth import views as auth_views
 from . import views as project_views
 
 urlpatterns = [
+
+    url(r'^$', project_views.landing, name='landing'),
     url(r'^admin/', admin.site.urls),
-    url(r'^home$', project_views.landing, name='landing'),
     url(r'^accounts/login/', auth_views.login, name='login'),
     url(r'^accounts/', include('registration.backends.simple.urls')),
-    url(r'^logout/$', auth_views.logout, {"next_page": '/home'}),
+    url(r'^logout/$', auth_views.logout, {"next_page": '/'}),
     url(r'^driver/', include('driver.urls')),
     url(r'^rider/', include('rider.urls')),
-
+    url(r'^geo/', include('geoApi.urls')),
 
 ]
 
