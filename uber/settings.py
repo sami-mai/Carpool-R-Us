@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'rider',
     'bootstrap3',
     'tinymce',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
