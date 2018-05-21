@@ -150,6 +150,11 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Cloudinary
+CLOUDINARY = {
+    'max_length': 200,
+}
+
 # Auth redirect
 # LOGIN_REDIRECT_URL = 'landing'
 # LOGOUT_REDIRECT_URL = 'landing'
