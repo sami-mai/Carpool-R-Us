@@ -60,6 +60,25 @@
         <a href="{% url 'rider_home' request.user.id%}" class="btn btn-info" type="button" name="button">Request a ride</a>
       </div>
     </div>
+  </div>
+  <div class="container-fluid" style="background-color:#FBEEEB;">
+    <div class="row">
+      <!-- <div class="col-md-8"> -->
+      <img class="img-responsive" style="width:750px; height:450px; float: right;" src="{%static '/images/driver.jpg'%}" alt="get a lift">
+      <!-- </div> -->
+      <div class="text-center">
+        <br>
+        <br>
+        <br>
+        <h2>Drive when you want.</h2>
+        <h3 class="text-muted">Make what you need.</h3>
+      <br>
+      <p class="text-muted"> Driving with Carpool-R-Us is flexible and rewarding,</p>
+      <p class="text-muted"> helping drivers meet their career and financial goals.</p>
+      <br>
+      <a href="{% url 'home' request.user.id%}" class="btn btn-info" type="button" name="button">Become a driver</a>
+    </div>
+  </div>
 
   </div>
   <!--  -->
@@ -100,13 +119,13 @@
         <br>
         <h2>It matters how you get there.</h2>
         <h3 class="text-muted">Your day belongs to you.</h3>
-      <br>
-      <p class="text-muted"> Carpool-R-Us is dedicated to keeping riders</p>
-      <p class="text-muted"> and drivers safe on the road.</p>
-      <br>
-      <a href="/accounts/register" class="btn btn-info" type="button" name="button">Sign up for a ride</a>
+        <br>
+        <p class="text-muted"> Carpool-R-Us is dedicated to keeping riders</p>
+        <p class="text-muted"> and drivers safe on the road.</p>
+        <br>
+        <a href="/accounts/register" class="btn btn-info" type="button" name="button">Sign up for a ride</a>
+      </div>
     </div>
-  </div>
 
   </div>
   {%endif%}
