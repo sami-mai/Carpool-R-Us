@@ -153,4 +153,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # API KEYS
-GOOGLE_API_KEY = config('GOOGLE_API_KEY')
+# GOOGLE_MAP_API_KEY = config('GOOGLE_MAP_API_KEY')
+MAP_WIDGETS = {
+    "GooglePointFieldWidget": (
+        ("zoom", 15),
+        ("mapCenterLocationName", "Nairobi"),
+        ("GooglePlaceAutocompleteOptions", {'componentRestrictions': {'country': 'Kenya'}}),
+        ("markerFitZoom", 12),
+    ),
+    "GOOGLE_MAP_API_KEY": config('GOOGLE_MAP_API_KEY')
+}
