@@ -30,7 +30,6 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {"next_page": '/'}),
     url(r'^driver/', include('driver.urls')),
     url(r'^rider/', include('rider.urls')),
-    url(r'^geo/', include('geoApi.urls')),
 
 ]
 

@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'driver',
     'rider',
     'mapwidgets',
-    'geoApi',
     'bootstrap3',
     'tinymce',
 ]
