@@ -1,72 +1,145 @@
 {%extends 'base.html'%}{% load bootstrap3 %}{% load static%}
 <!-- block content -->
 {% block content %}
-<div class="container-fluid" style="background-color:black; color: white;">
-  <div class="text-center">
-    <h2><strong style="font-family: 'Cookie', cursive;">
+<nav>
+  <div class="container-fluid" style="background-color:black; color: white;">
+    <div class="text-center">
+      <h2><strong style="font-family: 'Cookie', cursive;">
    <a href="{%url 'landing' %}"><img src="{% static '/images/caricon1.png'%}" width="30" height="30" alt="icon"></a>
    Carpool-R-Us Driver </strong>
     <span><a href="/logout/"><small style="float:right; padding-right:30px;">Logout</small></a></span></h2>
+    </div>
   </div>
-</div>
+</nav>
 
-<div class="container ">
+<section>
+  <div class="container ">
 
-  <div class="jumbotron text-center" style="background-color: white;">
-    <h1 style="font-family: 'Cookie', cursive;"><strong>Carpool-R-Us</strong></h1>
-    <br>
+    <div class="jumbotron text-center" style="background-color: white;">
+      <h1 style="font-family: 'Cookie', cursive;"><strong>Carpool-R-Us</strong></h1>
+      <br>
 
-    <h3>Welcome {{current_user|title}}, to the endless possibilities!</h3>
-    <!--  -->
-    {%if profile.license_number%}
-    <h4 class="text-muted">Good to have you back.</h4>
-    <br>
-    <a type="button" class="btn btn-default btn-sm" href="{% url 'edit_profile' current_user.id %}">Update profile <i class="fa fa-cog fa-spin"></i></a>
-    <!--  -->
-    {%else%}
-    <h4 class="text-muted">Let's get you set up.</h4>
-    <br>
-    <a type="button" class="btn btn-primary btn-lg" href="{% url 'edit_profile' current_user.id %}">Get Started</a> {%endif%}
+      <h3>Welcome {{current_user|title}}, Earn extra cash driving with Carpool-R-Us!</h3>
+      <!--  -->
+      {%if profile.license_number%}
+      <h4 class="text-muted">Good to have you back.</h4>
+      <br>
+      <a type="button" class="btn btn-default btn-sm" href="{% url 'edit_profile' current_user.id %}">Update profile <i class="fa fa-cog fa-spin"></i></a>
+      <!--  -->
+      {%else%}
+      <h4 class="text-muted">Let's get you set up.</h4>
+      <br>
+      <a type="button" class="btn btn-primary btn-lg" href="{% url 'edit_profile' current_user.id %}">Get Started</a> {%endif%}
+    </div>
+
   </div>
 
-</div>
-<!-- <hr> -->
+</section>
 
-<div class="container-fluid" style="background-color:#EAECEC; padding:20px; padding-top:40px;">
+<section>
+  <!--  -->
+  {%if profile.license_number%}
+  <hr>
 
-  <div class="row">
-    <div class="col-md-3">{{profile.name.first_name}}</div>
-    <div class="col-md-6">
-      <div class="container">
-        {% if profile.avatar %}
-        <img class="img-circle img-responsive" src="{{profile.avatar.url}}" alt="{{profile.name.username}}'s display picture" style="width:200px; height:200px">
-        <!--  -->
-        {% else %}
-        <img class="img-circle img-responsive" src="{% static '/images/default.png'%}" alt="default display picture" style="width:200px; height:200px">
-        <!--  -->
-        {% endif%}
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5" style="padding-left:20px; padding-right:20px;">
+        <div class="panel panel-default">
+          <div class="panel-body text-center">
+            {% if profile.avatar %}
+            <img class="img-thumbnail img-responsive" src="{{profile.avatar.url}}" alt="{{profile.name.username}}'s display picture" style="width:200px; height:200px">
+            <!--  -->
+            {% else %}
+            <img class="img-circle img-responsive" src="{% static '/images/default.png'%}" alt="default display picture" style="width:200px; height:200px">
+            <!--  -->
+            {% endif%}
+          </div>
+          <div class="container">
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="width:450px;">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Departure Information</a></h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    <form action="{% url 'home' current_user.id %}" method="post" enctype="multipart/form-data" style="width:400px;">
+                      {%csrf_token%}
+                      <div class="form-group">
+                        <label for="departure">Start From</label>
+                        <input type="email" class="form-control" id="departure" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        {% bootstrap_form form%}
+                        <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Pickup Information
+          </a>
+        </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- MAP -->
+      <div class=" col-md-7 ">
+        <!-- <div class="panel panel-default "> -->
+        <!-- <div class="panel-body text-center "> -->
+        <iframe width="650 " height="550 " frameborder="0 " style="border:0 " src="https://www.google.com/maps/embed/v1/view?center={{ latitude }},{{ longitude }}&zoom=8&key={{ api_key }} " allowfullscreen>
+        </iframe>
+        <!-- </div> -->
+        <!-- </div> -->
+      </div>
+      <!-- end MAP -->
+    </div>
+  </div>
+  {%else%}
+  <div class="container-fluid " style="background-color:#FBEEEB; ">
+    <div class="row ">
+      <img class="img-responsive " style="width:750px; height:450px; float: right; " src="{%static '/images/drive.jpg'%} " alt="hit the road ">
+
+      <div class="text-center ">
+        <br>
+        <br>
+        <br><br>
+        <br><br>
+        <h1>Ready to turn miles into money?</h1>
+        <h4 class="text-muted ">Carpool-R-Us will get you on the ride thing</h4>
+        <br>
+        <a class="btn btn-info " href="/accounts/register " type="button " name="button ">Set up your driver account</a>
       </div>
     </div>
   </div>
-</div>
-<!-- <hr> -->
-
-<!-- Explore images -->
-<div class="container">
-  <div class="row">
-
-  </div>
-</div>
-<!-- end Explore images -->
+  <!--  -->
+  {% endif%}
+</section>
 
 <!-- FOOTER -->
-<hr>
-<div class="container-fluid">
+<!-- <hr> -->
+<div class="container-fluid " style="background-color:#F0F0F0; padding:30px;">
 
   <footer>
-    <p class="pull-right"><a href="/">Back to top</a></p>
+    <p class="pull-right "><a href="/ ">Back to top</a></p>
     <p>&copy; 2018 Sami-Mai </p>
-    <!-- Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
+    <!-- Inc. &middot; <a href="# ">Privacy</a> &middot; <a href="# ">Terms</a></p> -->
   </footer>
 </div>
 

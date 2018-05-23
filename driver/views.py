@@ -2,7 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from .models import Driver_Profile
-from .forms import EditProfile, EditUserForm, CarForm
+from .forms import EditProfile, EditUserForm, CarForm, DepartureForm
+import requests
+from decouple import config
+
+
+GOOGLE_MAP_API_KEY = config('GOOGLE_MAP_API_KEY')
+IPSTACK_API_KEY = config('IPSTACK_API_KEY')
 
 
 @login_required(login_url='/accounts/login/')
@@ -10,7 +16,21 @@ def home(request, id):
     title = "Driver"
     current_user = request.user
     profile = Driver_Profile.objects.get(name=current_user.id)
-    context = {"title": title, "current_user": current_user, "profile": profile}
+    form = DepartureForm()
+    ip_address = request.META.get('HTTP_X_FORWARDED_FOR', '')
+    response = requests.get(f'http://freegeoip.net/json/{ip_address}?access_key={IPSTACK_API_KEY}')
+    geodata = response.json()
+    context = {
+        "title": title,
+        "form": form,
+        "current_user": current_user,
+        "profile": profile,
+        'ip': geodata['ip'],
+        'country': geodata['country_name'],
+        'latitude': geodata['latitude'],
+        'longitude': geodata['longitude'],
+        'api_key': GOOGLE_MAP_API_KEY
+        }
 
     return render(request, 'index.html', context)
 

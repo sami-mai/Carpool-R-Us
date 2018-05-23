@@ -19,3 +19,9 @@ class CarForm(forms.ModelForm):
     class Meta:
         model = Car
         fields = ('type', 'brand', 'colour', 'plate_num', 'seat_capacity')
+
+
+class DepartureForm(forms.ModelForm):
+    class Meta:
+        model = Driver_Profile
+        fields = ['destination']
